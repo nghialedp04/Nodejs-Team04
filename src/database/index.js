@@ -4,3 +4,4 @@ export * from "./concernRepositories";
 export * from "./menubarRepositories";
 export * from "./ourmainRepositories";
 export * from "./roadtoRepositories";
+export * from "./alumniRepositories";

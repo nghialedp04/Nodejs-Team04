@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const MenuBarImgSchema = new Schema(
+const AlumniSchema = new Schema(
   {
     name: {
       type: String,
@@ -22,4 +22,4 @@ const MenuBarImgSchema = new Schema(
   }
 );
 
-export const MenuBarIMG = mongoose.model("menubarimages", MenuBarImgSchema);
+export const Alumni = mongoose.model("alumnies", AlumniSchema);
