@@ -30,6 +30,7 @@ const create = (UserCreateReq) => {
     name: UserCreateReq.name,
     phone: UserCreateReq.phone,
     email: UserCreateReq.email,
+    password: UserCreateReq.password,
   };
 
   return new Promise((resolve, reject) => {
