@@ -19,4 +19,9 @@ export default {
     status: "422",
     message: "INVALID_DATA",
   },
+
+  EXIST_NAME: {
+    status: "400",
+    message: "EXIST_NAME",
+  },
 };

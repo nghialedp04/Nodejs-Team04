@@ -17,7 +17,7 @@ app.use(cors());
 // mongoose connection
 mongoose.connect(
   config.mongodbUrl(),
-  { useNewUrlParser: true, useUnifiedTopology: true },
+  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
   () => {
     console.log("Connect Database successful");
   }
