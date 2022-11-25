@@ -6,6 +6,7 @@ const RoadToSchema = new Schema(
   {
     name: {
       type: String,
+      unique: true,
     },
   },
   {

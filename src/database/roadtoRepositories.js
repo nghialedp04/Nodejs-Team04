@@ -17,7 +17,28 @@ const getList = async (pageIndex, pageSize) => {
     });
 };
 
+const update = async (RoadtoId, RoadtoUpdateReq) => {
+  return await RoadTo.findByIdAndUpdate(RoadtoId, RoadtoUpdateReq).catch((err) => {
+    throw err;
+  });
+};
+
+const deleteRoadto = async (RoadtoId) => {
+  return await RoadTo.findByIdAndDelete(RoadtoId).catch((err) => {
+    throw err;
+  });
+};
+
+const findByRoadtoName = async (name) => {
+  return await RoadTo.findOne({ name: name }).catch((err) => {
+    throw err;
+  });
+};
+
 export const roadtoRepositories = {
   create,
   getList,
+  findByRoadtoName,
+  deleteRoadto,
+  update
 };

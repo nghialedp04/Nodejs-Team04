@@ -91,7 +91,6 @@ const update = (SkillId, SkillUpdateReq, fileUrl) => {
       });
 
       checkSkillUpdate.validateAsync(SkillUpdateReq).catch((err) => {
-        console.log(err);
         reject({
           Status: 400,
           Message: err.details[0].message,
