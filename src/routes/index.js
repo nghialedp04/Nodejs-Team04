@@ -16,7 +16,7 @@ Routes.use('/roadtos', RoadToRouter);
 Routes.use('/ourmains', OurMainRouter);
 Routes.use('/menubars', MenubarRouter);
 Routes.use('/concerns', ConcernRouter);
-Routes.use('/alumies', AlumniRouter);
+Routes.use('/alumnies', AlumniRouter);
 
 
 
