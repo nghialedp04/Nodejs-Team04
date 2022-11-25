@@ -1,10 +1,9 @@
 import express from "express";
 import { roadtoController } from "../controllers";
-import uploadCloud from "../middlewares/upload";
 
 const RoadToRouter = express.Router();
 
-RoadToRouter.post("/", uploadCloud.array("images"), roadtoController.create);
+RoadToRouter.post("/" , roadtoController.create);
 
 RoadToRouter.get("/", roadtoController.getList);
 

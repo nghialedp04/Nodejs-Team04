@@ -57,6 +57,11 @@ const getOne = (ConcernId) => {
       const concern = await Concern.findById(ConcernId).catch((err) => {
         throw reject(errors.NOT_FOUND);
       });
+
+      if (!concern) {
+        reject(errors.NOT_FOUND);
+      }
+
       resolve(concern);
     } catch (error) {
       throw reject(error);
@@ -70,6 +75,10 @@ const update = (ConcernId, ConcernUpdateReq) => {
       const checkConcern = await Concern.findById(ConcernId).catch((err) => {
         throw reject(errors.NOT_FOUND);
       });
+
+      if (!checkConcern) {
+        reject(errors.NOT_FOUND);
+      }
 
       const checkConcernUpdate = Joi.object({
         title: Joi.string().required().max(255),
@@ -106,7 +115,7 @@ const deleteConcern = (ConcernId) => {
   return new Promise(async (resolve, reject) => {
     try {
       const checkConcern = await Concern.findById(ConcernId).catch((err) => {
-        throw reject(err);
+        reject(errors.NOT_FOUND);
       });
 
       if (!checkConcern) {
