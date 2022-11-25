@@ -10,13 +10,13 @@ import AlumniRouter from './alumniRoute';
 
 const Routes = express.Router();
 
-Routes.use('/users', UserRouter);
-Routes.use('/skills', SkillRouter);
-Routes.use('/roadtos', RoadToRouter);
-Routes.use('/ourmains', OurMainRouter);
-Routes.use('/menubars', MenubarRouter);
-Routes.use('/concerns', ConcernRouter);
-Routes.use('/alumnies', AlumniRouter);
+Routes.use('/api/users', UserRouter);
+Routes.use('/api/skills', SkillRouter);
+Routes.use('/api/roadtos', RoadToRouter);
+Routes.use('/api/ourmains', OurMainRouter);
+Routes.use('/api/menubars', MenubarRouter);
+Routes.use('/api/concerns', ConcernRouter);
+Routes.use('/api/alumnies', AlumniRouter);
 
 
 

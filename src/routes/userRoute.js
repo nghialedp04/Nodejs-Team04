@@ -9,7 +9,7 @@ UserRouter.get("/me", usersController.getMe);
 
 UserRouter.post("/", usersController.create);
 
-UserRouter.put("/", usersController.update);
+UserRouter.post("/", usersController.update);
 
 UserRouter.delete("/", usersController.deleteUser);
 

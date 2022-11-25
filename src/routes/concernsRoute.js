@@ -9,7 +9,7 @@ ConcernRouter.get("/", concernController.getList);
 
 ConcernRouter.get("/:_id", concernController.getOne);
 
-ConcernRouter.put("/:_id", concernController.update);
+ConcernRouter.post("/:_id", concernController.update);
 
 ConcernRouter.delete("/:_id", concernController.deleteConcern);
 

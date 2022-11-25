@@ -14,10 +14,10 @@ const create = async (req, res) => {
     });
 };
 
-const getList = (req, res) => {
+const getList = async (req, res) => {
   const pageSize = +req.query.pageSize ? +req.query.pageSize : 10;
   const pageIndex = +req.query.pageIndex ? +req.query.pageIndex : 1;
-  concernService
+  await concernService
     .getList(pageIndex, pageSize)
     .then((data) => {
       ResponseBase.responseJsonHandler(data, res);
@@ -27,9 +27,9 @@ const getList = (req, res) => {
     });
 };
 
-const getOne = (req, res) => {
+const getOne = async (req, res) => {
   const ConcernId = req.params._id;
-  concernService
+  await concernService
     .getOne(ConcernId)
     .then((data) => {
       ResponseBase.responseJsonHandler(data, res);
@@ -39,10 +39,10 @@ const getOne = (req, res) => {
     });
 };
 
-const update = (req, res) => {
+const update = async (req, res) => {
   const ConcernId = req.params._id;
   const ConcernUpdateReq = req.body;
-  concernService
+  await concernService
     .update(ConcernId, ConcernUpdateReq)
     .then((data) => {
       ResponseBase.responseJsonHandler(data, res);
@@ -52,9 +52,9 @@ const update = (req, res) => {
     });
 };
 
-const deleteConcern = (req, res) => {
+const deleteConcern = async (req, res) => {
   const ConcernId = req.params._id;
-  concernService
+  await concernService
     .deleteConcern(ConcernId)
     .then((data) => {
       ResponseBase.responseJsonHandler(data, res);

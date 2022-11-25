@@ -23,8 +23,24 @@ const findByAlumniName = async (name) => {
   });
 };
 
+const deleteAlumni = async (AlumniId) => {
+  return await Alumni.findByIdAndDelete(AlumniId).catch((err) => {
+    throw err;
+  });
+};
+
+const update = async (AlumniId, AlumniUpdateReq) => {
+  return await Alumni.findByIdAndUpdate(AlumniId, AlumniUpdateReq).catch(
+    (err) => {
+      throw err;
+    }
+  );
+};
+
 export const alumniRepositories = {
   create,
   getList,
   findByAlumniName,
+  deleteAlumni,
+  update,
 };

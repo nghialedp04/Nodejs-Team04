@@ -12,6 +12,6 @@ MenuBarRouter.get("/:_id", menubarController.getOne);
 
 MenuBarRouter.delete("/:_id", menubarController.deleteMenubar);
 
-MenuBarRouter.put("/:_id", menubarController.update);
+MenuBarRouter.post("/:_id", menubarController.update);
 
 export default MenuBarRouter;

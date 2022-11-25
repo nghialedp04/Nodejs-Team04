@@ -8,4 +8,10 @@ AlumniRouter.post("/", uploadCloud.array("images"), alumniController.create);
 
 AlumniRouter.get("/", alumniController.getList);
 
+AlumniRouter.get("/:_id", alumniController.getOne);
+
+AlumniRouter.delete("/:_id", alumniController.deleteAlumni);
+
+AlumniRouter.post("/:_id", alumniController.update);
+
 export default AlumniRouter;
