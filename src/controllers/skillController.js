@@ -1,18 +1,18 @@
-import { async } from "regenerator-runtime";
 import { Helper, ResponseBase } from "../helper";
+import uploadCloud from "../middlewares/upload";
 import { skillService } from "../services/skillService";
 
-const create =  (req, res) => {
-  const fileUrl = req.file.path;
-  const createSkillReq = req.body
-    skillService
+const create = (req, res) => {
+  const fileUrl = req.files[0].path;
+  const createSkillReq = req.body;
+  skillService
     .create(createSkillReq, fileUrl)
     .then((data) => {
       ResponseBase.responseJsonHandler(data, res);
     })
     .catch((error) => {
       Helper.responseJsonHandler(error, null, res);
-    });   
+    });
 };
 
 const getList = (req, res) => {
@@ -21,7 +21,7 @@ const getList = (req, res) => {
   skillService
     .getList(pageIndex, pageSize)
     .then((data) => {
-      ResponseBase.responseJsonHandler(data, res)
+      ResponseBase.responseJsonHandler(data, res);
     })
     .catch((error) => {
       Helper.responseJsonHandler(error, null, res);
@@ -29,30 +29,44 @@ const getList = (req, res) => {
 };
 
 const update = (req, res) => {
-  const SkillId = req.body.id;
-  const SkillUpdateReq = req.body;
-  skillService
-    .update(SkillId, SkillUpdateReq)
-    .then((data) => {
-      ResponseBase.responseJsonHandler(data, res)
-    })
-    .catch((error) => {
-      Helper.responseJsonHandler(error, null, res);
-    });
+  if (req.files !== undefined) {
+    uploadCloud.array("images");
+    const fileUrl = req.files[0].path;
+    const SkillId = req.body._id;
+    const SkillUpdateReq = req.body;
+    skillService
+      .update(SkillId, SkillUpdateReq, fileUrl)
+      .then((data) => {
+        ResponseBase.responseJsonHandler(data, res);
+      })
+      .catch((error) => {
+        Helper.responseJsonHandler(error, null, res);
+      });
+  } else {
+    const SkillId = req.body._id;
+    const SkillUpdateReq = req.body;
+    skillService
+      .update(SkillId, SkillUpdateReq)
+      .then((data) => {
+        ResponseBase.responseJsonHandler(data, res);
+      })
+      .catch((error) => {
+        Helper.responseJsonHandler(error, null, res);
+      });
+  }
 };
 
 const deleteSkill = (req, res) => {
   const SkillId = req.body._id;
   skillService
-    .deleteUser(SkillId)
+    .deleteSkill(SkillId)
     .then((data) => {
-      ResponseBase.responseJsonHandler(data, res)
+      ResponseBase.responseJsonHandler(data, res);
     })
     .catch((error) => {
       Helper.responseJsonHandler(error, null, res);
     });
 };
-
 
 export const skillController = {
   create,

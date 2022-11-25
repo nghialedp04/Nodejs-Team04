@@ -7,6 +7,9 @@ const MenuBarImgSchema = new Schema(
     image: {
       type: String,
     },
+    name: {
+      type: String,
+    },
   },
   {
     timestamps: true,

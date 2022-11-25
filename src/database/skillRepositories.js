@@ -1,6 +1,6 @@
 import { errors } from "../helper";
 import { Skill } from "../schemas/skill";
-import regeneratorRuntime from "regenerator-runtime";
+import regeneratorRuntime, { async } from "regenerator-runtime";
 
 const create = async (newSkill) => {
   return await Skill.create(newSkill).catch((err) => {
@@ -8,23 +8,14 @@ const create = async (newSkill) => {
   });
 };
 
-const getList = (pageIndex, pageSize) => {
-  const skip = pageIndex === 1 ? 0 : (pageIndex - 1) * pageSize;
-  return new Promise((resolve, reject) => {
-    try {
-      Skill.find({}, (error, data) => {
-        if (error) {
-          reject(errors[404]);
-        } else {
-          resolve(data);
-        }
-      })
-        .skip(skip)
-        .limit(pageSize);
-    } catch (error) {
-      reject(errors);
-    }
-  });
+const getList = async (pageIndex, pageSize) => {
+  const skip = +pageIndex === 1 ? 0 : (+pageIndex - 1) * +pageSize;
+  return await Skill.find({})
+    .skip(skip)
+    .limit(+pageSize)
+    .catch((err) => {
+      throw err;
+    });
 };
 
 const update = async (SkillId, SkillUpdateReq) => {
@@ -34,9 +25,9 @@ const update = async (SkillId, SkillUpdateReq) => {
 };
 
 const deleteSkill = (SkillId) => {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     try {
-      Skill.findByIdAndDelete(SkillId, (err, data) => {
+      await Skill.findByIdAndDelete(SkillId, (err, data) => {
         if (err) {
           reject(errors[404]);
         } else {
@@ -49,8 +40,8 @@ const deleteSkill = (SkillId) => {
   });
 };
 
-const findBySkillName = (name) => {
-  return Skill.findOne({ name: name }).catch((err) => {
+const findBySkillName = async (name) => {
+  return await Skill.findOne({ name: name }).catch((err) => {
     throw err;
   });
 };
