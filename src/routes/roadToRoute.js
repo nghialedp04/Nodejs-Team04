@@ -11,6 +11,6 @@ RoadToRouter.get("/:_id", roadtoController.getOne);
 
 RoadToRouter.delete("/:_id", roadtoController.deleteRoadto);
 
-RoadToRouter.put("/:_id", roadtoController.update);
+RoadToRouter.post("/:_id", roadtoController.update);
 
 export default RoadToRouter;

@@ -12,6 +12,6 @@ OurMainRouter.get("/:_id", ourmainController.getOne);
 
 OurMainRouter.delete("/:_id", ourmainController.deleteOurmain);
 
-OurMainRouter.put("/:_id", ourmainController.update);
+OurMainRouter.post("/:_id", ourmainController.update);
 
 export default OurMainRouter;

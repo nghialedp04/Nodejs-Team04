@@ -53,13 +53,13 @@ const deleteMenubar = async (req, res) => {
     });
 };
 
-const update = (req, res) => {
+const update = async (req, res) => {
   if (req.files !== undefined) {
     uploadCloud.array("images");
     const fileUrl = req.files[0].path;
     const MenubarId = req.params._id;
     const MenubarUpdateReq = req.body;
-    menubarService
+    await menubarService
       .update(MenubarId, MenubarUpdateReq, fileUrl)
       .then((data) => {
         ResponseBase.responseJsonHandler(data, res);
@@ -70,7 +70,7 @@ const update = (req, res) => {
   } else {
     const MenubarId = req.params._id;
     const MenubarUpdateReq = req.body;
-    menubarService
+    await menubarService
       .update(MenubarId, MenubarUpdateReq)
       .then((data) => {
         ResponseBase.responseJsonHandler(data, res);
