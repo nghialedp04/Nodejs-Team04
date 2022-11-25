@@ -7,9 +7,10 @@ ConcernRouter.post("/", concernController.create);
 
 ConcernRouter.get("/", concernController.getList);
 
-// ConcernRouter.put("/", concernController.update);
+ConcernRouter.get("/:_id", concernController.getOne);
 
+ConcernRouter.put("/:_id", concernController.update);
 
-// ConcernRouter.delete("/", concernController.deleteSkill);
+ConcernRouter.delete("/:_id", concernController.deleteConcern);
 
 export default ConcernRouter;

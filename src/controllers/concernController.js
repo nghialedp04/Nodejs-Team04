@@ -27,35 +27,47 @@ const getList = (req, res) => {
     });
 };
 
-// const update = (req, res) => {
-//   const ConcernId = req.body._id;
-//   const ConcernUpdateReq = req.body;
+const getOne = (req, res) => {
+  const ConcernId = req.params._id;
+  concernService
+    .getOne(ConcernId)
+    .then((data) => {
+      ResponseBase.responseJsonHandler(data, res);
+    })
+    .catch((error) => {
+      Helper.responseJsonHandler(error, null, res);
+    });
+};
 
-//   concernService
-//     .update(ConcernId, ConcernUpdateReq)
-//     .then((data) => {
-//       ResponseBase.responseJsonHandler(data, res);
-//     })
-//     .catch((error) => {
-//       Helper.responseJsonHandler(error, null, res);
-//     });
-// };
+const update = (req, res) => {
+  const ConcernId = req.params._id;
+  const ConcernUpdateReq = req.body;
+  concernService
+    .update(ConcernId, ConcernUpdateReq)
+    .then((data) => {
+      ResponseBase.responseJsonHandler(data, res);
+    })
+    .catch((error) => {
+      Helper.responseJsonHandler(error, null, res);
+    });
+};
 
-// const deleteConcern = (req, res) => {
-//   const ConcernId = req.body._id;
-//   concernService
-//     .deleteSkill(ConcernId)
-//     .then((data) => {
-//       ResponseBase.responseJsonHandler(data, res);
-//     })
-//     .catch((error) => {
-//       Helper.responseJsonHandler(error, null, res);
-//     });
-// };
+const deleteConcern = (req, res) => {
+  const ConcernId = req.params._id;
+  concernService
+    .deleteConcern(ConcernId)
+    .then((data) => {
+      ResponseBase.responseJsonHandler(data, res);
+    })
+    .catch((error) => {
+      Helper.responseJsonHandler(error, null, res);
+    });
+};
 
 export const concernController = {
   create,
   getList,
-  // update,
-  // deleteConcern,
+  getOne,
+  update,
+  deleteConcern,
 };
