@@ -12,7 +12,7 @@ const Routes = express.Router();
 
 Routes.use('/users', UserRouter);
 Routes.use('/skills', SkillRouter);
-Routes.use('/roadtodps', RoadToRouter);
+Routes.use('/roadtos', RoadToRouter);
 Routes.use('/ourmains', OurMainRouter);
 Routes.use('/menubars', MenubarRouter);
 Routes.use('/concerns', ConcernRouter);

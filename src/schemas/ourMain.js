@@ -16,4 +16,4 @@ const OurMainSchema = new Schema(
   }
 );
 
-export const RoadTo = mongoose.model("ourmains", OurMainSchema);
+export const Ourmain = mongoose.model("ourmains", OurMainSchema);
