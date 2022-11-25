@@ -17,7 +17,21 @@ const getList = async (pageIndex, pageSize) => {
     });
 };
 
+const deleteMenubar = async (MenubarId) => {
+  return await MenuBarIMG.findByIdAndDelete(MenubarId).catch((err) => {
+    throw err;
+  });
+};
+
+const update = async (MenubarId) => {
+  return MenuBarIMG.findByIdAndUpdate(MenubarId).catch((err) => {
+    throw err;
+  });
+};
+
 export const menubarRepositories = {
   create,
   getList,
+  deleteMenubar,
+  update,
 };

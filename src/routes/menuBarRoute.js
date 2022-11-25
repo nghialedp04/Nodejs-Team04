@@ -8,4 +8,10 @@ MenuBarRouter.post("/", uploadCloud.array("images"), menubarController.create);
 
 MenuBarRouter.get("/", menubarController.getList);
 
+MenuBarRouter.get("/:_id", menubarController.getOne);
+
+MenuBarRouter.delete("/:_id", menubarController.deleteMenubar);
+
+MenuBarRouter.put("/:_id", menubarController.update);
+
 export default MenuBarRouter;
