@@ -4,12 +4,12 @@ import uploadCloud from "../middlewares/upload";
 
 const SkillRouter = express.Router();
 
-SkillRouter.post("/", uploadCloud.single('image'), skillController.create);
-
-SkillRouter.put("/", skillController.update);
+SkillRouter.post("/", uploadCloud.array("images"), skillController.create);
 
 SkillRouter.get("/", skillController.getList);
 
-SkillRouter.delete("/", skillController.deleteSkill);
+SkillRouter.put("/", skillController.update);
+
+// SkillRouter.delete("/", skillController.deleteSkill);
 
 export default SkillRouter;
