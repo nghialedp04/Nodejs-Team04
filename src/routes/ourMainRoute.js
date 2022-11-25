@@ -12,6 +12,6 @@ OurMainRouter.get("/:_id", ourmainController.getOne);
 
 OurMainRouter.delete("/:_id", ourmainController.deleteOurmain);
 
-OurMainRouter.post("/:_id", ourmainController.update);
+OurMainRouter.post("/:_id",uploadCloud.array("images"), ourmainController.update);
 
 export default OurMainRouter;

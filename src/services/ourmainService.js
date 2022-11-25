@@ -48,7 +48,7 @@ const getOne = (OurmainId) => {
   });
 };
 
-const update = (OurmainId, OurmainUpdateReq, fileUrl) => {
+const update = (OurmainId, OurmainUpdateReq, fileUrl=null) => {
   return new Promise(async (resolve, reject) => {
     try {
       const checkOurmain = await Ourmain.findById(OurmainId).catch(() => {

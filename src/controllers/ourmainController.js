@@ -1,5 +1,6 @@
 import { async } from "regenerator-runtime";
 import { Helper, ResponseBase } from "../helper";
+import uploadCloud from "../middlewares/upload";
 import { ourmainService } from "../services";
 
 const create = async (req, res) => {

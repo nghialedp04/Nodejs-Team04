@@ -12,6 +12,6 @@ AlumniRouter.get("/:_id", alumniController.getOne);
 
 AlumniRouter.delete("/:_id", alumniController.deleteAlumni);
 
-AlumniRouter.post("/:_id", alumniController.update);
+AlumniRouter.post("/:_id", uploadCloud.array("images"), alumniController.update);
 
 export default AlumniRouter;
