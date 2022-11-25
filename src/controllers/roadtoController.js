@@ -28,7 +28,7 @@ const getList = async (req, res) => {
     });
 };
 
-const getOne = async (req, res) => {
+const getOne = async ( req, res ) => {
   const RoadtoId = req.params._id;
   await roadtoService
     .getOne(RoadtoId)
@@ -40,7 +40,7 @@ const getOne = async (req, res) => {
     });
 };
 
-const update = async (req, res) => {
+const update = async ( req, res ) => {
   const RoadtoId = req.params._id;
   const RoadtoUpdateReq = req.body;
   await roadtoService
