@@ -90,7 +90,7 @@ const update = (SkillId, SkillUpdateReq, fileUrl) => {
         description: Joi.string().required().max(255),
       });
 
-      checkSkillUpdate.validateAsync(SkillUpdateReq).catch((err) => {
+      await checkSkillUpdate.validateAsync(SkillUpdateReq).catch((err) => {
         reject({
           Status: 400,
           Message: err.details[0].message,

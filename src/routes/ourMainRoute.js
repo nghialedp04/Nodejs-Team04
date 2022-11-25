@@ -8,4 +8,10 @@ OurMainRouter.post("/", uploadCloud.array("images"), ourmainController.create);
 
 OurMainRouter.get("/", ourmainController.getList);
 
+OurMainRouter.get("/:_id", ourmainController.getOne);
+
+OurMainRouter.delete("/:_id", ourmainController.deleteOurmain);
+
+OurMainRouter.put("/:_id", ourmainController.update);
+
 export default OurMainRouter;
