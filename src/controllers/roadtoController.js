@@ -40,11 +40,15 @@ const getOne = async (req, res) => {
     });
 };
 
-const update = async (req, res) => {
+const update = (req, res) => {
+
+  if (req.files && req.files.length > 0) {
+    var fileUrl = req.files[0].path;
+  }
   const RoadtoId = req.params._id;
   const RoadtoUpdateReq = req.body;
-  await roadtoService
-    .update(RoadtoId, RoadtoUpdateReq)
+  roadtoService
+    .update(RoadtoId, RoadtoUpdateReq, fileUrl)
     .then((data) => {
       ResponseBase.responseJsonHandler(data, res);
     })

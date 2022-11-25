@@ -9,11 +9,10 @@ const create = async (newConcern) => {
 
 const getList = async (pageIndex, pageSize) => {
   const skip = +pageIndex === 1 ? 0 : (+pageIndex - 1) * +pageSize;
-  return await Concern.find({})
+  return await Concern.find()
     .skip(skip)
     .limit(+pageSize)
     .catch((err) => {
-      console.log(err);
       throw err;
     });
 };

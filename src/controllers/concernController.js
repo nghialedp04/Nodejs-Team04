@@ -3,6 +3,7 @@ import { Helper, ResponseBase } from "../helper";
 import { concernService } from "../services/concernService";
 
 const create = async (req, res) => {
+  
   const createConcernReq = req.body;
   await concernService
     .create(createConcernReq)
@@ -40,10 +41,13 @@ const getOne = async (req, res) => {
 };
 
 const update = async (req, res) => {
+  if (req.files && req.files.length > 0) {
+    var fileUrl = req.files[0].path;
+  }
   const ConcernId = req.params._id;
   const ConcernUpdateReq = req.body;
   await concernService
-    .update(ConcernId, ConcernUpdateReq)
+    .update(ConcernId, ConcernUpdateReq, fileUrl)
     .then((data) => {
       ResponseBase.responseJsonHandler(data, res);
     })

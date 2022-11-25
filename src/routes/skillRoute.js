@@ -1,10 +1,9 @@
 import express from "express";
 import multer from "multer";
-import { skillController } from "../controllers";
+import { skillController } from "../controllers/skillController";
 import uploadCloud from "../middlewares/upload";
 
 const SkillRouter = express.Router();
-const upload = uploadCloud.array('images')
 
 SkillRouter.post("/", uploadCloud.array("images"), skillController.create);
 
@@ -12,6 +11,9 @@ SkillRouter.get("/", skillController.getList);
 
 SkillRouter.get("/:_id", skillController.getOne);
 
+SkillRouter.delete("/:_id", skillController.deleteSkill);
+
+const upload = uploadCloud.array('images')
 SkillRouter.post("/:_id", function (req, res) {
     upload(req, res, function (err) {
         if (err instanceof multer.MulterError) {
@@ -22,7 +24,4 @@ SkillRouter.post("/:_id", function (req, res) {
       skillController.update(req, res)
     })
 });
-
-SkillRouter.delete("/:_id", skillController.deleteSkill);
-
 export default SkillRouter;

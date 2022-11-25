@@ -1,5 +1,7 @@
 import express from "express";
+import multer from "multer";
 import { roadtoController } from "../controllers";
+import uploadCloud from "../middlewares/upload";
 
 const RoadToRouter = express.Router();
 
@@ -11,6 +13,15 @@ RoadToRouter.get("/:_id", roadtoController.getOne);
 
 RoadToRouter.delete("/:_id", roadtoController.deleteRoadto);
 
-RoadToRouter.post("/:_id", roadtoController.update);
-
+const upload = uploadCloud.array('images')
+RoadToRouter.post("/:_id", function (req, res) {
+  upload(req, res, function (err) {
+        if (err instanceof multer.MulterError) {
+          res.send('err')
+        } else if (err) {
+        res.send('err')
+      }
+      roadtoController.update(req, res)
+    })
+});
 export default RoadToRouter;

@@ -4,7 +4,6 @@ import { menubarController } from "../controllers";
 import uploadCloud from "../middlewares/upload";
 
 const MenuBarRouter = express.Router();
-const upload = uploadCloud.array('images')
 MenuBarRouter.post("/", uploadCloud.array("images"), menubarController.create);
 
 MenuBarRouter.get("/", menubarController.getList);
@@ -13,6 +12,7 @@ MenuBarRouter.get("/:_id", menubarController.getOne);
 
 MenuBarRouter.delete("/:_id", menubarController.deleteMenubar);
 
+const upload = uploadCloud.array('images')
 MenuBarRouter.post("/:_id", function (req, res) {
     upload(req, res, function (err) {
         if (err instanceof multer.MulterError) {

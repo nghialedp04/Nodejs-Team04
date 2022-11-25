@@ -42,7 +42,7 @@ const getOne = async (req, res) => {
 };
 
 const update = (req, res) => {
-  if (req.files.length > 0) {
+  if (req.files && req.files.length > 0) {
     var fileUrl = req.files[0].path;
   }
   const SkillId = req.params._id;
@@ -51,7 +51,7 @@ const update = (req, res) => {
     .update(SkillId, SkillUpdateReq, fileUrl)
     .then((data) => {
       ResponseBase.responseJsonHandler(data, res);
-    })  
+    })
     .catch((error) => {
       Helper.responseJsonHandler(error, null, res);
     });
@@ -59,6 +59,7 @@ const update = (req, res) => {
 
 const deleteSkill = async (req, res) => {
   const SkillId = req.params._id;
+  console.log(SkillId);
   await skillService
     .deleteSkill(SkillId)
     .then((data) => {

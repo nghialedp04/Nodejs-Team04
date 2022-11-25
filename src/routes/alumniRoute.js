@@ -1,4 +1,5 @@
 import express from "express";
+import multer from "multer";
 import { alumniController } from "../controllers";
 import uploadCloud from "../middlewares/upload";
 
@@ -12,6 +13,15 @@ AlumniRouter.get("/:_id", alumniController.getOne);
 
 AlumniRouter.delete("/:_id", alumniController.deleteAlumni);
 
-AlumniRouter.post("/:_id", alumniController.update);
-
+const upload = uploadCloud.array('images')
+AlumniRouter.post("/:_id", function (req, res) {
+    upload(req, res, function (err) {
+        if (err instanceof multer.MulterError) {
+          res.send('err')
+        } else if (err) {
+        res.send('err')
+      }
+      alumniController.update(req, res)
+    })
+});
 export default AlumniRouter;

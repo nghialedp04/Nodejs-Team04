@@ -69,7 +69,7 @@ const getOne = (RoadtoId) => {
   });
 };
 
-const update = (RoadtoId, RoadtoUpdateReq) => {
+const update = (RoadtoId, RoadtoUpdateReq, fileUrl=null) => {
   return new Promise(async (resolve, reject) => {
     try {
       const checkRoadto = await RoadTo.findById(RoadtoId).catch(() => {

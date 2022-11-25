@@ -49,8 +49,8 @@ const create = (skillCreateReq, fileUrl) =>
   });
 
 const getList = (pageIndex, pageSize) => {
-  return new Promise(async (resolve, reject) => {
-    await skillRepositories
+  return new Promise((resolve, reject) => {
+    skillRepositories
       .getList(pageIndex, pageSize)
       .then((response) => {
         resolve(response);

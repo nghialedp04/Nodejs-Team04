@@ -52,11 +52,14 @@ const deleteAlumni = async (req, res) => {
     });
 };
 
-const update = async (req, res) => {
+const update = (req, res) => {
+  if (req.files && req.files.length > 0) {
+    var fileUrl = req.files[0].path;
+  }
   const AlumniId = req.params._id;
   const AlumniUpdateReq = req.body;
-  await alumniService
-    .update(AlumniId, AlumniUpdateReq)
+  alumniService
+    .update(AlumniId, AlumniUpdateReq, fileUrl)
     .then((data) => {
       ResponseBase.responseJsonHandler(data, res);
     })
