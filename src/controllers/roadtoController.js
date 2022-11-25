@@ -28,7 +28,47 @@ const getList = async (req, res) => {
     });
 };
 
+const getOne = async (req, res) => {
+  const RoadtoId = req.params._id;
+  await roadtoService
+    .getOne(RoadtoId)
+    .then((data) => {
+      ResponseBase.responseJsonHandler(data, res);
+    })
+    .catch((error) => {
+      Helper.responseJsonHandler(error, null, res);
+    });
+};
+
+const update = async (req, res) => {
+  const RoadtoId = req.params._id;
+  const RoadtoUpdateReq = req.body;
+  await roadtoService
+    .update(RoadtoId, RoadtoUpdateReq)
+    .then((data) => {
+      ResponseBase.responseJsonHandler(data, res);
+    })
+    .catch((error) => {
+      Helper.responseJsonHandler(error, null, res);
+    });
+};
+
+const deleteRoadto = async (req, res) => {
+  const RoadtoId = req.params._id;
+  await roadtoService
+    .deleteRoadto(RoadtoId)
+    .then((data) => {
+      ResponseBase.responseJsonHandler(data, res);
+    })
+    .catch((error) => {
+      Helper.responseJsonHandler(error, null, res);
+    });
+};
+
 export const roadtoController = {
   create,
   getList,
+  getOne,
+  deleteRoadto,
+  update,
 };
