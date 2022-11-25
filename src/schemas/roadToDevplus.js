@@ -7,9 +7,6 @@ const RoadToSchema = new Schema(
     name: {
       type: String,
     },
-    number: {
-      type: Number,
-    },
   },
   {
     timestamps: true,
