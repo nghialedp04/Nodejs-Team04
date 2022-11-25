@@ -9,7 +9,7 @@ const create = (concernCreateReq) => {
     try {
       const checkConcernCreate = Joi.object({
         title: Joi.string().required().max(255),
-        description: Joi.string().required().max(255),
+        description: Joi.string().required().max(600),
       });
 
       try {
@@ -82,7 +82,7 @@ const update = (ConcernId, ConcernUpdateReq) => {
 
       const checkConcernUpdate = Joi.object({
         title: Joi.string().required().max(255),
-        description: Joi.string().required().max(255),
+        description: Joi.string().required().max(600),
       });
 
       try {

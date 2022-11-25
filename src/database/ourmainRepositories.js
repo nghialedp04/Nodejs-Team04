@@ -17,7 +17,30 @@ const getList = async (pageIndex, pageSize) => {
     });
 };
 
+const update = async (OurmainId, OurmainUpdateReq) => {
+  return await Ourmain.findByIdAndUpdate(OurmainId, OurmainUpdateReq).catch(
+    (err) => {
+      throw err;
+    }
+  );
+};
+
+const deleteOurmain = async (OurmainId) => {
+  return await Ourmain.findByIdAndDelete(OurmainId).catch((err) => {
+    throw err;
+  });
+};
+
+const findByOurmainName = async (name) => {
+  return await Ourmain.findOne({ name: name }).catch((err) => {
+    throw err;
+  });
+};
+
 export const ourmainRepositories = {
   create,
   getList,
+  deleteOurmain,
+  update,
+  findByOurmainName,
 };
