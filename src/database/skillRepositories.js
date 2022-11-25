@@ -24,19 +24,9 @@ const update = async (SkillId, SkillUpdateReq) => {
   });
 };
 
-const deleteSkill = (SkillId) => {
-  return new Promise(async (resolve, reject) => {
-    try {
-      await Skill.findByIdAndDelete(SkillId, (err, data) => {
-        if (err) {
-          reject(errors[404]);
-        } else {
-          resolve(data);
-        }
-      });
-    } catch (error) {
-      resolve(error);
-    }
+const deleteSkill = async (SkillId) => {
+  return await Skill.findByIdAndDelete(SkillId).catch((err) => {
+    throw err;
   });
 };
 

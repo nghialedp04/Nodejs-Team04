@@ -8,8 +8,10 @@ SkillRouter.post("/", uploadCloud.array("images"), skillController.create);
 
 SkillRouter.get("/", skillController.getList);
 
-SkillRouter.put("/", skillController.update);
+SkillRouter.get("/:_id", skillController.getOne);
 
-// SkillRouter.delete("/", skillController.deleteSkill);
+SkillRouter.put("/:_id", skillController.update);
+
+SkillRouter.delete("/:_id", skillController.deleteSkill);
 
 export default SkillRouter;

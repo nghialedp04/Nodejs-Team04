@@ -28,11 +28,23 @@ const getList = (req, res) => {
     });
 };
 
+const getOne = (req, res) => {
+  const SkillId = req.params._id;
+  skillService
+    .getOne(SkillId)
+    .then((data) => {
+      ResponseBase.responseJsonHandler(data, res);
+    })
+    .catch((error) => {
+      Helper.responseJsonHandler(error, null, res);
+    });
+};
+
 const update = (req, res) => {
   if (req.files !== undefined) {
     uploadCloud.array("images");
     const fileUrl = req.files[0].path;
-    const SkillId = req.body._id;
+    const SkillId = req.params._id;
     const SkillUpdateReq = req.body;
     skillService
       .update(SkillId, SkillUpdateReq, fileUrl)
@@ -43,7 +55,7 @@ const update = (req, res) => {
         Helper.responseJsonHandler(error, null, res);
       });
   } else {
-    const SkillId = req.body._id;
+    const SkillId = req.params._id;
     const SkillUpdateReq = req.body;
     skillService
       .update(SkillId, SkillUpdateReq)
@@ -57,7 +69,7 @@ const update = (req, res) => {
 };
 
 const deleteSkill = (req, res) => {
-  const SkillId = req.body._id;
+  const SkillId = req.params._id;
   skillService
     .deleteSkill(SkillId)
     .then((data) => {
@@ -71,6 +83,7 @@ const deleteSkill = (req, res) => {
 export const skillController = {
   create,
   getList,
+  getOne,
   update,
   deleteSkill,
 };
