@@ -7,6 +7,9 @@ const MenuBarImgSchema = new Schema(
     name: {
       type: String,
     },
+    position: {
+      type: String,
+    },
     image: {
       type: String,
     },
