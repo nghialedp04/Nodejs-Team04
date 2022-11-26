@@ -41,32 +41,20 @@ const getOne = async (req, res) => {
     });
 };
 
-const update = async (req, res) => {
-  if (req.files !== undefined) {
-    uploadCloud.array("images");
-    const fileUrl = req.files[0].path;
-    const SkillId = req.params._id;
-    const SkillUpdateReq = req.body;
-    await skillService
-      .update(SkillId, SkillUpdateReq, fileUrl)
-      .then((data) => {
-        ResponseBase.responseJsonHandler(data, res);
-      })
-      .catch((error) => {
-        Helper.responseJsonHandler(error, null, res);
-      });
-  } else {
-    const SkillId = req.params._id;
-    const SkillUpdateReq = req.body;
-    await skillService
-      .update(SkillId, SkillUpdateReq)
-      .then((data) => {
-        ResponseBase.responseJsonHandler(data, res);
-      })
-      .catch((error) => {
-        Helper.responseJsonHandler(error, null, res);
-      });
+const update = (req, res) => {
+  if (req.files.length > 0) {
+    var fileUrl = req.files[0].path;
   }
+  const SkillId = req.params._id;
+  const SkillUpdateReq = req.body;
+  skillService
+    .update(SkillId, SkillUpdateReq, fileUrl)
+    .then((data) => {
+      ResponseBase.responseJsonHandler(data, res);
+    })  
+    .catch((error) => {
+      Helper.responseJsonHandler(error, null, res);
+    });
 };
 
 const deleteSkill = async (req, res) => {
