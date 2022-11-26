@@ -23,8 +23,8 @@ const deleteMenubar = async (MenubarId) => {
   });
 };
 
-const update = async (MenubarId) => {
-  return MenuBarIMG.findByIdAndUpdate(MenubarId).catch((err) => {
+const update = async (MenubarId, updateMenubarReq) => {
+  return MenuBarIMG.findByIdAndUpdate(MenubarId, updateMenubarReq).catch((err) => {
     throw err;
   });
 };

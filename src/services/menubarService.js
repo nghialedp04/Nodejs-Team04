@@ -67,13 +67,13 @@ const deleteMenubar = (MenubarId) => {
   });
 };
 
-const update = (MenubarId, MenubarUpdateReq, fileUrl) => {
+const update = (MenubarId, MenubarUpdateReq, fileUrl=null) => {
   return new Promise(async (resolve, reject) => {
     try {
       const checkMenubar = await MenuBarIMG.findById(MenubarId).catch(() => {
         throw reject(errors.NOT_FOUND);
       });
-
+    
       if (!checkMenubar) {
         reject(errors.NOT_FOUND);
       }
@@ -89,7 +89,7 @@ const update = (MenubarId, MenubarUpdateReq, fileUrl) => {
         });
       });
 
-      if (fileUrl !== undefined) {
+      if (fileUrl) {
         var updateMenubar = {
           name: MenubarUpdateReq.name,
           image: fileUrl,
